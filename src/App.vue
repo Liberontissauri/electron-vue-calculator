@@ -55,7 +55,7 @@ export default {
           show_signal = true;
         } else {
           final_string +=
-            operation.slice(0, 1) + " " + operation.slice(1, 2) + " ";
+            operation.slice(0, 1) + " " + operation.slice(1) + " ";
 
           show_signal = true;
         }
