@@ -1,20 +1,20 @@
 <template>
   <CalcView :content="calc_view_string" />
   <div id="button-div">
-    <CalcButton :orange_color="true" content="1"/>
-    <CalcButton :orange_color="true" content="2"/>
-    <CalcButton :orange_color="true" content="3"/>
-    <CalcButton content="+"/>
-    <CalcButton :orange_color="true" content="4"/>
-    <CalcButton :orange_color="true" content="5"/>
-    <CalcButton :orange_color="true" content="6"/>
-    <CalcButton content="-"/>
-    <CalcButton :orange_color="true" content="7"/>
-    <CalcButton :orange_color="true" content="8"/>
-    <CalcButton :orange_color="true" content="9"/>
-    <CalcButton content="x"/>
-    <CalcButton :orange_color="true" content="0"/>
-    <CalcButton content="Clear"/>
+    <CalcButton :orange_color="true" content="1" @click="numberPress('1')"/>
+    <CalcButton :orange_color="true" content="2" @click="numberPress('2')"/>
+    <CalcButton :orange_color="true" content="3" @click="numberPress('3')"/>
+    <CalcButton content="+" @click="enableIsAdd"/>
+    <CalcButton :orange_color="true" content="4" @click="numberPress('4')"/>
+    <CalcButton :orange_color="true" content="5" @click="numberPress('5')"/>
+    <CalcButton :orange_color="true" content="6" @click="numberPress('6')"/>
+    <CalcButton content="-" @click="enableIsMinus"/>
+    <CalcButton :orange_color="true" content="7" @click="numberPress('7')"/>
+    <CalcButton :orange_color="true" content="8" @click="numberPress('8')"/>
+    <CalcButton :orange_color="true" content="9" @click="numberPress('9')"/>
+    <CalcButton content="x" @click="multiply"/>
+    <CalcButton :orange_color="true" content="0" @click="numberPress('0')"/>
+    <CalcButton content="Clear" @click="clear"/>
     <CalcButton content="="/>
     <CalcButton content="/"/>
   </div>
@@ -32,9 +32,58 @@ export default {
   },
   data() {
     return {
-      calc_view: ["+1", "+5"],
+      calc_view: [],
       calc_stack: [],
+      is_add: true,
+      is_minus: false,
     };
+  },
+  methods: {
+    enableIsMinus() {
+      this.is_minus = true;
+      this.is_add = false;
+    },
+    enableIsAdd() {
+      this.is_minus = false;
+      this.is_add = true;
+    },
+    disableAll() {
+      this.is_minus = false;
+      this.is_add = false;
+    },
+    numberPress(value) {
+      if (this.is_minus) this.subtractValue(value);
+      else this.addValue(value);
+    },
+    addValue(value) {
+      if (this.is_add) {
+        this.calc_view.push("+" + value);
+        this.disableAll();
+      } else {
+        this.calc_view.push(this.calc_view.pop() + value)
+      }
+    },
+    subtractValue(value) {
+      if (this.is_minus) {
+        this.calc_view.push("-" + value);
+        this.disableAll();
+      } else {
+        this.calc_view.push(this.calc_view.pop() + value)
+      }
+    },
+    multiply() {
+      if (!this.isOperator(this.calc_view[this.calc_view.length - 1])) {
+        this.calc_view.push("*");
+        this.enableIsAdd();
+      }
+    },
+    clear() {
+      this.calc_view = [];
+      this.is_add = true;
+    },
+    isOperator(value) {
+      return value.includes("*") || value.includes("/");
+    },
   },
   computed: {
     calc_view_string: function () {
@@ -63,7 +112,6 @@ export default {
       return final_string;
     },
   },
-  methods: {},
 };
 </script>
 
