@@ -1,6 +1,6 @@
 <template>
   <div class="CalcView-Div">
-      <h2 class="CalcView-Content">{{ content }}</h2>
+    <h2 class="CalcView-Content">{{ content }}</h2>
   </div>
 </template>
 
@@ -16,7 +16,11 @@ export default {
 <style>
 .CalcView-Div {
   display: flex;
+  align-items: flex-end;
+  height: 15vh;
   flex-direction: row-reverse;
+
+  padding-bottom: 20px;
 }
 .CalcView-Content {
   margin-right: 40px;
