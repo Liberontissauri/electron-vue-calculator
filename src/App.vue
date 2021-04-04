@@ -1,22 +1,22 @@
 <template>
   <CalcView :content="calc_view_string" />
   <div id="button-div">
-    <CalcButton :orange_color="true" content="1" @click="numberPress('1')"/>
-    <CalcButton :orange_color="true" content="2" @click="numberPress('2')"/>
-    <CalcButton :orange_color="true" content="3" @click="numberPress('3')"/>
-    <CalcButton content="+" @click="enableIsAdd"/>
-    <CalcButton :orange_color="true" content="4" @click="numberPress('4')"/>
-    <CalcButton :orange_color="true" content="5" @click="numberPress('5')"/>
-    <CalcButton :orange_color="true" content="6" @click="numberPress('6')"/>
-    <CalcButton content="-" @click="enableIsMinus"/>
-    <CalcButton :orange_color="true" content="7" @click="numberPress('7')"/>
-    <CalcButton :orange_color="true" content="8" @click="numberPress('8')"/>
-    <CalcButton :orange_color="true" content="9" @click="numberPress('9')"/>
-    <CalcButton content="x" @click="multiply"/>
-    <CalcButton :orange_color="true" content="0" @click="numberPress('0')"/>
-    <CalcButton content="Clear" @click="clear"/>
-    <CalcButton content="="/>
-    <CalcButton content="/"/>
+    <CalcButton :orange_color="true" content="1" @click="numberPress('1')" />
+    <CalcButton :orange_color="true" content="2" @click="numberPress('2')" />
+    <CalcButton :orange_color="true" content="3" @click="numberPress('3')" />
+    <CalcButton content="+" @click="enableIsAdd" />
+    <CalcButton :orange_color="true" content="4" @click="numberPress('4')" />
+    <CalcButton :orange_color="true" content="5" @click="numberPress('5')" />
+    <CalcButton :orange_color="true" content="6" @click="numberPress('6')" />
+    <CalcButton content="-" @click="enableIsMinus" />
+    <CalcButton :orange_color="true" content="7" @click="numberPress('7')" />
+    <CalcButton :orange_color="true" content="8" @click="numberPress('8')" />
+    <CalcButton :orange_color="true" content="9" @click="numberPress('9')" />
+    <CalcButton content="x" @click="multiply" />
+    <CalcButton :orange_color="true" content="0" @click="numberPress('0')" />
+    <CalcButton content="Clear" @click="clear" />
+    <CalcButton content="=" />
+    <CalcButton content="/" />
   </div>
 </template>
 
