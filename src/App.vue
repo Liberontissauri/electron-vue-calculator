@@ -16,7 +16,7 @@
     <CalcButton :orange_color="true" content="0" @click="numberPress('0')" />
     <CalcButton content="Clear" @click="clear" />
     <CalcButton content="=" />
-    <CalcButton content="/" />
+    <CalcButton content="/" @click="divide"/>
   </div>
 </template>
 
@@ -74,6 +74,12 @@ export default {
     multiply() {
       if (!this.isOperator(this.calc_view[this.calc_view.length - 1])) {
         this.calc_view.push("*");
+        this.enableIsAdd();
+      }
+    },
+    divide() {
+      if (!this.isOperator(this.calc_view[this.calc_view.length - 1])) {
+        this.calc_view.push("/");
         this.enableIsAdd();
       }
     },
